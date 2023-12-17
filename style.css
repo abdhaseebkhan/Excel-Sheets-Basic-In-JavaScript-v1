@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Lato&family=Poppins:wght@300&family=Raleway&display=swap');
+*{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+button{
+  cursor: pointer;
+}
+.MainPage{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.MainPage .Header{
+    height: 60px;
+    box-shadow: 0 0 10px #00000050;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+.MainPage .Header p{
+    font-size: 150%;
+    font-weight: 600;
+}
+.MainPage .Header button{
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 20px;
+    border: none;
+}
+.MainPage .Body{
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 5px;
+    overflow: auto;
+}
+.MainPage .Body .Table{
+    display: flex;
+    width: max-content;
+    height: max-content;
+}
+.MainPage .Body .Table .Col{
+    width: 100px;
+}
+.MainPage .Body .Table .Col .Cell{
+    border: 1.5px solid #00000020;
+    height: 30px;
+    margin: 1px;
+    cursor: text;
+    padding: 0 5px ;
+    display: flex;
+    font-size: 80%;
+    align-items: center;
+}
+.MainPage .Body .Table .Col .Cell:focus{
+    border-color: #000;
+    outline: none;
+}

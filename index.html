@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+ 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="MainPage">
+        <div class="Header">
+            <p>Excel Sheet v1.0</p>
+            <button id="DownloadBtn">Download</button>
+        </div>
+        <div class="Body">
+            <div class="Table"></div>
+        </div>
+    </div>
+    <script>
+        const Table = document.querySelector(".Table");
+        const DownloadBtn = document.querySelector("#DownloadBtn");
+        (()=>{
+            for (let i = 0; i < 50; i++) {
+                let Col = document.createElement("div");
+                Col.classList="Col";
+                for (let u = 0; u < 50; u++) {
+                    let Cell = document.createElement("div");
+                    Cell.classList="Cell";
+                    Col.appendChild(Cell);
+                    Cell.contentEditable="true";
+                }
+                Table.appendChild(Col);
+            }
+
+            
+        })()
+        DownloadBtn.onclick=()=>{
+            let Data = [];
+            const Cols = document.getElementsByClassName("Col");
+            for (let i = 0; i < Cols.length; i++) {
+                let Col = Cols[i];
+                let Cells = Col.getElementsByClassName("Cell");
+                let Arr1 = [];
+                for (let u = 0; u < 50; u++) {
+                    let Cell = Cells[u];
+                    Arr1 = [...Arr1, Cell.textContent];
+                }
+                Table.appendChild(Col);
+                Data = [...Data, Arr1];
+            }
+
+            console.log(Data)
+
+            var workbook = XLSX.utils.book_new(),
+                worksheet = XLSX.utils.aoa_to_sheet(Data);
+            workbook.SheetNames.push("First");
+            workbook.Sheets["First"] = worksheet;
+
+
+            XLSX.writeFile(workbook, "TeachersLoginInfo.xlsx");
+             
+        }
+
+    </script>
+</body>
+</html>
